@@ -1,0 +1,12 @@
+
+
+scene 1
+Text to be displayed in typewriter animation style
+The world is becoming more urbanized and by 2050 more than 60% of the worlds 
+population is expected to live in cities
+
+show hamilton map with buildings appearing to demonstrate growth 
+
+scene 2
+
+

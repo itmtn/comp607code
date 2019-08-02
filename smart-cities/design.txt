@@ -1,4 +1,5 @@
 
+Selected a story based approach following sequence for this design
 
 scene 1
 Text to be displayed in typewriter animation style

@@ -1,16 +1,18 @@
 
-
 function scene1Create(){    
-    var scene1 = new createjs.Container();
-    scene1.tTimer = 0;
-    scene1.tData = "The world is becoming more urbanized and by 2050 more than 60% of the world's \n population is expected to live in cities";    
-    scene1.tIndex = 0;
-    scene1.gTimer = 0;    
-    scene1.growthCount = 60;
-
-    tText = new createjs.Text("", "20px Arial", "#000000");
-    tText.x = 20;
-    tText.y = 20;
+    var scene = new createjs.Container();   
+    scene.name="scene1";
+    scene.data = {}; 
+    scene.data.tTimer = 0;
+    scene.data.tData = "The world is becoming more urbanized and by 2050 more than 60% of the world's \n population is expected to live in cities";    
+    scene.data.tIndex = 0;
+    scene.data.gTimer = 0;    
+    scene.data.growthCount = 60;    
+    scene.data.tText = new createjs.Text("", "20px Arial", "#000000");
+    scene.data.tText.x = 20;
+    scene.data.tText.y = 20;
+    scene.data.finished = false;
+    scene.data.fTimer = 0;
 
     var buildings = [[30,323,207],[30,371,234],[30,341,264],[30,276,292],[20,315,261],[20,383,284],
                      [20,313,301],[20,374,212],[20,292,262],[40,272,212],[40,409,264]];   
@@ -33,41 +35,50 @@ function scene1Create(){
         shape.graphics.beginFill("#999999").drawRect(0, 0, building[0], building[0]);
         shape.x = building[1];
         shape.y = building[2];
-        scene1.addChild(shape);
+        scene.addChild(shape);
     }
-
-
-    scene1.textListener = createjs.Ticker.addEventListener("tick", function(event){
-        if (scene1.tTimer < createjs.Ticker.getTime()){
-            scene1.tTimer = createjs.Ticker.getTime() + 100;
-            if (scene1.tIndex < scene1.tData.length){
-                tText.text = tText.text + scene1.tData[scene1.tIndex];
-                scene1.tIndex = scene1.tIndex + 1;                
+    
+    scene.animateText = function(event){
+        if (scene.data.tTimer < createjs.Ticker.getTime()){
+            scene.data.tTimer = createjs.Ticker.getTime() + 50;
+            if (scene.data.tIndex < scene.data.tData.length){
+                scene.data.tText.text = scene.data.tText.text + scene.data.tData[scene.data.tIndex];
+                scene.data.tIndex = scene.data.tIndex + 1;                
             }
         }
-    });
+    };
     
-    scene1.growthListener = createjs.Ticker.addEventListener("tick", function(event){
-        if (scene1.gTimer < createjs.Ticker.getTime()){
-            scene1.gTimer = createjs.Ticker.getTime() + 180;
-            if (scene1.growthCount > 0){
-                var b = growth[scene1.growthCount];                
+    scene.animateBuildings = function(event){
+        if (scene.data.gTimer < createjs.Ticker.getTime()){
+            scene.data.gTimer = createjs.Ticker.getTime() + 120;
+            if (scene.data.growthCount > 0){
+                var b = growth[scene.data.growthCount];                
                 var shape = new createjs.Shape();
                 shape.graphics.beginFill("#999999").drawRect(0, 0, b[0], b[0]);
                 shape.x = b[1];
                 shape.y = b[2];
-                scene1.growthCount--;
-                scene1.addChild(shape);
+                scene.data.growthCount--;
+                scene.addChild(shape);
+            } else if (scene.data.growthCount == 0) {
+                scene.removeEventListener("tick", scene.animateBuildings);
+                scene.removeEventListener("tick", scene.animateText);
+                scene.data.finished = true;
+                scene.data.fTimer = createjs.Ticker.getTime() + 300;
             }
         }        
-    });
+    };
 
-    scene1.addChild(tText);    
-    return scene1;
+    scene.finish = function(event){
+        if (scene.data.finished && scene.data.fTimer < createjs.Ticker.getTime()){
+            console.log("exiting " + scene.name);
+            nextScene();
+        }
+    };
+
+    scene.addEventListener("tick", scene.animateText);    
+    scene.addEventListener("tick", scene.animateBuildings);
+    scene.addEventListener("tick", scene.finish);    
+    scene.addChild(scene.data.tText);    
+    return scene;
 }
 
-function scene1Destroy(){
-    // createjs.Ticker.removeEventListener(scene1.textListener);
-    // createjs.Ticker.removeEventListener(scene1.growthListener);
-
-}

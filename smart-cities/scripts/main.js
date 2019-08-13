@@ -25,7 +25,7 @@ function preload(){
 
     files = ["data.png", "power.png", "sanitation.png", "transport.png", "water.png"];
     files.forEach(function(item){
-        queue.loadFile("assets/" + item);    
+        queue.loadFile({id:item, src:"assets/" + item});    
     });
 }
 
@@ -33,20 +33,19 @@ function main(){
     stage.removeAllChildren();
     scenes.push(scene1Create());
     scenes.push(scene2Create());  
-    sindex = 0;
+    sindex = 1;
     stage.addChild(scenes[sindex]);
 }
 
-function nextScene(){    
+function nextScene(){        
     stage.removeChild(scenes[sindex]);
     sceneDestroy(scenes[sindex]);
     if (sindex < scenes.length){
+        console.log("next scene");
         sindex++;
         stage.addChild(scenes[sindex]);
     }
 }
-
-
 
 function sceneDestroy(scene){
     scene.removeAllEventListeners();

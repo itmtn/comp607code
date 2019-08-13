@@ -30,11 +30,6 @@ function setUpScreen1(){
   screen1.addChild(arrow);
   stage.addChild(screen1);
 
-  document.getElementById("hideButton").addEventListener("click", function(){
-    vpath.visible = !vpath.visible;
-  });
-
-  document.getElementById("ReplayPathAnimation").disabled = true;
 
 }  
 

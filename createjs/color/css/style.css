@@ -1,0 +1,19 @@
+html, body {
+	background-color: #CCC;
+  	padding: 0; margin: 0;
+  	overflow:hidden;
+}
+
+canvas{
+	display: block;
+	background-color: #fff;	
+}
+
+#container {
+	display: block;
+	padding-left: 0;	
+	padding-right: 0;
+	width: 800px;
+	margin: 40px auto 0px auto;	
+	border: 2px solid black;
+}

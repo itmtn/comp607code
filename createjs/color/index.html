@@ -2,12 +2,19 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+	<!--
+
+		have to download and install color plugin js file locally in scripts folder
+		downloaded from https://github.com/CreateJS/TweenJS/tree/master/src/tweenjs/plugins
+
+	-->
+	<script src="scripts/ColorPlugin.js"></script>
 	<script language="javascript" src="scripts/main.js"></script>
 </head>
 <body onload="init()">
 
 	<div id="container">
-	<canvas id="slide" width="800" height="600"></canvas>
+	<canvas id="stageCanvas" width="800" height="600"></canvas>
 	</div>
 
 </body>

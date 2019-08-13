@@ -3,8 +3,15 @@ html, body{
     background: black;
 }
 
-canvas{
-    background: white;
+
+div#container{
     margin: 20px auto 20px auto;
+    width: 800px;
+    height: 600px;
+    text-align: center;
+}
+
+canvas{
+    background: red;
     display: block;
 }

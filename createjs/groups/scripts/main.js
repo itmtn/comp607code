@@ -34,7 +34,7 @@ function addBackground(){
 function setupFishAnimation(){
   fishGroup = new createjs.Container();
   // create 10 fish and add to fish group
-  for(var i = 0; i < 10; i++){
+  for(var i = 0; i < 5; i++){
     // create a fish bitmap object with a random location
     var fish = new createjs.Bitmap("images/fish.png");
     fish.x = Math.floor((Math.random() * 250) - 1);
@@ -53,10 +53,12 @@ function setupFishAnimation(){
     fishGroup.addChild(fish);
   }
   // position fishgroup completely off to left of stage visible area
-  fishGroup.x = -350;
+  fishGroup.x = 0;
   fishGroup.y = 100;
   // tween the fishes horizontal property
   fishTween = createjs.Tween.get(fishGroup, {loop: false, stop: true})
     .to({x: 800}, 12000, createjs.Ease.linear);
+  fishTween2 = createjs.Tween.get(fishGroup, {loop: false, stop: true})
+  .to({y: 570}, 12000, createjs.Ease.sineInOut);
   stage.addChild(fishGroup);
 }

@@ -20,17 +20,27 @@ function scene2Create(){
         }
     };       
 
-    var imgData = new createjs.Bitmap(queue.getResult("data.png"));
-    var imgPower = new createjs.Bitmap(queue.getResult("power.png"));
-    var imgSanitation = new createjs.Bitmap(queue.getResult("sanitation.png"));
-    var imgTransport = new createjs.Bitmap(queue.getResult("transport.png"));
+    var imgData = new createjs.Bitmap(queue.getResult("data"));
+    var imgPower = new createjs.Bitmap(queue.getResult("power"));
+    var imgSanitation = new createjs.Bitmap(queue.getResult("sanitation"));
+    var imgTransport = new createjs.Bitmap(queue.getResult("transport"));
     var imgWater = new createjs.Bitmap(queue.getResult("water.png"));
 
+    var iconTime = 4500;
     imgData.regX = 30; imgData.regY = 34;  imgData.x = 400;  imgData.y = -300;    
-    createjs.Tween.get(imgData).to({y: 100}, 2000);
+    createjs.Tween.get(imgData).to({y: 100}, iconTime);
 
     imgPower.regX = 30; imgPower.regY = 34; imgPower.x = -300; imgPower.y = 300;
-    createjs.Tween.get(imgPower).to({x: 100}, 2000);    
+    createjs.Tween.get(imgPower).to({x: 100}, iconTime);    
+
+    imgSanitation.regX = 30; imgSanitation.regY = 34; imgSanitation.x = 1000; imgSanitation.y = 300;
+    createjs.Tween.get(imgSanitation).to({x: 700}, iconTime);   
+    
+    imgTransport.regX = 30; imgTransport.regY = 34; imgTransport.x = 400; imgTransport.y = 900;
+    createjs.Tween.get(imgTransport).to({y: 500}, iconTime);   
+    
+
+
 
     scene.addEventListener("tick", scene.animateText);   
     scene.addChild(imgData);

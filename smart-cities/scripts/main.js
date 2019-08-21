@@ -12,7 +12,6 @@ function init(){
 
 function preload(){        
     queue = new createjs.LoadQueue();
-    queue.addEventListener('fileload', main);
 
     var bar = new createjs.Shape();
     bar.graphics.beginFill("red").drawRect(0, 0, 0, 0);
@@ -23,10 +22,13 @@ function preload(){
         bar.graphics.beginFill("red").drawRect(200, 295, event.progress * 400, 10);
     });
 
-    files = ["data.png", "power.png", "sanitation.png", "transport.png", "water.png"];
-    files.forEach(function(item){
-        queue.loadFile({id:item, src:"assets/" + item});    
-    });
+    queue.loadFile({id:"sanitation", src:"assets/sanitation.png"});
+    queue.loadFile({id:"data", src:"assets/data.png"});      
+    queue.loadFile({id:"power", src:"assets/power.png"});     
+    queue.loadFile({id:"transport", src:"assets/transport.png"});
+    queue.loadFile({id:"water", src:"assets/water.png"});    
+
+    queue.addEventListener("complete", main);
 }
 
 function main(){

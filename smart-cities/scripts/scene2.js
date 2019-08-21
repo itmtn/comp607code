@@ -38,9 +38,22 @@ function scene2Create(){
     
     imgTransport.regX = 30; imgTransport.regY = 34; imgTransport.x = 400; imgTransport.y = 900;
     createjs.Tween.get(imgTransport).to({y: 500}, iconTime);   
-    
 
+    imgData.addEventListener("click", function(){
+        console.log("data click");
+    });
 
+    imgPower.addEventListener("click", function(){
+        console.log("power click");
+    });
+
+    imgSanitation.addEventListener("click", function(){
+        console.log("sanitation click");
+    });
+
+    imgTransport.addEventListener("click", function(){
+        console.log("transport click");
+    });
 
     scene.addEventListener("tick", scene.animateText);   
     scene.addChild(imgData);

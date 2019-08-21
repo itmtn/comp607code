@@ -35,6 +35,11 @@ function main(){
     stage.removeAllChildren();
     scenes.push(scene1Create());
     scenes.push(scene2Create());  
+    scenes.push(sceneDataCreate());
+    scenes.push(sceneSanitationCreate());
+    scenes.push(sceneTransportCreate());
+    scenes.push(scenePowerCreate());
+    scenes.push(sceneWaterCreate());
     sindex = 1;
     stage.addChild(scenes[sindex]);
 }

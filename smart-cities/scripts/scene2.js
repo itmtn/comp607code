@@ -26,18 +26,11 @@ function scene2Create(){
     var imgTransport = new createjs.Bitmap(queue.getResult("transport.png"));
     var imgWater = new createjs.Bitmap(queue.getResult("water.png"));
 
-    //console.log(imgData);
-    //createjs.Tween.get(imgData).set({x: 340, y: 100}, 0);
-    imgWater.x = 100;
-    imgWater.y = 200;
-    imgWater.filters = [
-        new createjs.ColorFilter(0, 0, 0, 1, 0, 0, 255, 0)
-    ];
-    
-    var b = imgWater.getBounds();
-    console.log(b);
-    //imgWater.cache(0, 0, b.width, b.height);
+    imgData.regX = 30; imgData.regY = 34;  imgData.x = 400;  imgData.y = -300;    
+    createjs.Tween.get(imgData).to({y: 100}, 2000);
 
+    imgPower.regX = 30; imgPower.regY = 34; imgPower.x = -300; imgPower.y = 300;
+    createjs.Tween.get(imgPower).to({x: 100}, 2000);    
 
     scene.addEventListener("tick", scene.animateText);   
     scene.addChild(imgData);

@@ -33,7 +33,7 @@ function main(){
     stage.removeAllChildren();
     scenes.push(scene1Create());
     scenes.push(scene2Create());  
-    sindex = 0;
+    sindex = 1;
     stage.addChild(scenes[sindex]);
 }
 
